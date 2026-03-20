@@ -15,3 +15,7 @@ numpy
 pandas
 # Testing.
 pytest
+# Quantum computing.
+qiskit[visualization]
+# Quantum simulators.
+qiskit-aer
