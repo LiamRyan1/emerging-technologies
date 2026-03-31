@@ -26,6 +26,15 @@ With four Boolean inputs there are $2^4 = 16$ possible input combinations, so th
 
 This problem implements `random_constant_balanced`, a function that randomly returns a Boolean function satisfying this promise with equal probability of producing either type.
 
+## Problem 2: Classical Testing for Function Type
+
+When making use of the classical solution, given a black-box function `f`, the only way to determine its type classically is to call it with inputs and observe the outputs.
+
+The naive approach checks all $2^4 = 16$ inputs, but to avoid this its possible to stop early once the answer is certain. This problem implements `determine_constant_balanced`, a function that identifies whether `f` is constant or balanced using **at most 9 calls**.
+
+### Classical vs. Quantum Complexity
+
+The 9-query classical bound stands in sharp contrast to Deutsch's quantum algorithm, which solves the equivalent single-bit problem in a **single query**.
 
 ## References
 
