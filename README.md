@@ -55,6 +55,16 @@ This problem implements all four oracles in Qiskit and demonstrates their behavi
 
 Note on Qiskit bitstring ordering: Qiskit writes measurement results with the least significant bit on the right, so for a 2-qubit circuit the result string `"XY"` means qubit 1 = `X` (index `[0]`) and qubit 0 = `Y` (index `[1]`). Throughout the tests, `most_likely[0]` reads the ancilla qubit and `most_likely[1]` reads the input qubit.
 
+## Problem 4: Deutsch's Algorithm with Qiskit
+
+ Problem 4 uses the oracles built in problem 3 inside a full quantum circuit to determine whether a function is constant or balanced in a single query. This demonstrates  quantum advantage, classically the worst case required 9 calls, here only 1 is needed regardless of the function.
+
+The circuit works by putting both qubits into superposition before calling the oracle. The ancilla qubit is flipped to 1 before the superposition step, which causes the oracle's effect to be encoded into the phase of the input qubit rather than into any measurable bit flip. A second superposition step on the input qubit after the oracle converts that phase difference into a measurable outcome. If the function is constant the two paths interfere constructively and the input qubit collapses to 0, if the function is balanced they interfere destructively and it collapses to 1.
+
+This problem implements `deutsch_circuit`, a function that wraps any of the four oracles from Problem 3 in the full Deutsch circuit and demonstrates that it correctly classifies all four functions using [Qiskit](https://www.ibm.com/quantum/qiskit) and its [quantum circuit tools](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/introduction).
+
+ [IBM Quantum Learning module on Deutsch's algorithm](https://quantum.cloud.ibm.com/learning/en/courses/fundamentals-of-quantum-algorithms/quantum-query-algorithms/deutsch-algorithm).
+
 ## References
 
 - Deutsch–Jozsa algorithm — https://en.wikipedia.org/wiki/Deutsch%E2%80%93Jozsa_algorithm
@@ -62,3 +72,5 @@ Note on Qiskit bitstring ordering: Qiskit writes measurement results with the le
 - [Quantum Superposition](https://scienceexchange.caltech.edu/topics/quantum-science-explained/quantum-superposition): Background on superposition, which is what makes a single oracle query sufficient in Problem 4.
 - [Quantum Entanglement and Global Properties](https://plato.stanford.edu/archives/fall2008/entries/qt-entangle/#5): Context for why quantum algorithms can determine global properties such as constant or balanced without checking every input.
 - [Group Theory and Quantum Algorithms](https://www.ibm.com/quantum/blog/group-theory): Broader context on the mathematical structures underlying quantum speedups of the kind demonstrated here
+- [Deutsch's Algorithm](https://quantum.cloud.ibm.com/learning/en/courses/fundamentals-of-quantum-algorithms/quantum-query-algorithms/deutsch-algorithm): Primary reference for the Deutsch circuit structure used in Problem 4 and the interference argument that makes a single query sufficient.
+- [Quantum Circuits](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/introduction): Qiskit documentation covering the circuit model used to implement the algorithm.
