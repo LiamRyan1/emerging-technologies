@@ -65,6 +65,14 @@ This problem implements `deutsch_circuit`, a function that wraps any of the four
 
  [IBM Quantum Learning module on Deutsch's algorithm](https://quantum.cloud.ibm.com/learning/en/courses/fundamentals-of-quantum-algorithms/quantum-query-algorithms/deutsch-algorithm).
 
+## Problem 5: Scaling to the Deutsch–Jozsa Algorithm
+
+Problem 5 builds off of problem 4's single-bit solving of deutch's in one query by scales that same approach to the four-bit functions from Problem 1. The [Deutsch–Jozsa algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/deutsch-jozsa) generalises Deutsch's circuit to handle any number of input bits while still using only a single query to the oracle, compared to the classical worst case of 9 queries established in Problem 2.
+
+The circuit follows the same structure as Problem 4 but wider. Instead of one input qubit there are now four, plus one ancilla qubit. All five qubits are put into superposition before the oracle runs. After the oracle, a second superposition step is applied to the four input qubits only. If the function is constant all four input qubits collapse to 0, if the function is balanced they collapse to any other combination.
+
+This problem implements `build_oracle_from_function`, which encodes any four-bit Boolean function from Problem 1 as a quantum oracle, and `dj_circuit`, which wraps that oracle in the full Deutsch–Jozsa circuit. The algorithm is demonstrated on both constant functions and two randomly chosen balanced functions, and verified against the classical solution from Problem 2 across 20 randomly generated functions..
+
 ## References
 
 - Deutsch–Jozsa algorithm — https://en.wikipedia.org/wiki/Deutsch%E2%80%93Jozsa_algorithm
@@ -72,5 +80,5 @@ This problem implements `deutsch_circuit`, a function that wraps any of the four
 - [Quantum Superposition](https://scienceexchange.caltech.edu/topics/quantum-science-explained/quantum-superposition): Background on superposition, which is what makes a single oracle query sufficient in Problem 4.
 - [Quantum Entanglement and Global Properties](https://plato.stanford.edu/archives/fall2008/entries/qt-entangle/#5): Context for why quantum algorithms can determine global properties such as constant or balanced without checking every input.
 - [Group Theory and Quantum Algorithms](https://www.ibm.com/quantum/blog/group-theory): Broader context on the mathematical structures underlying quantum speedups of the kind demonstrated here
-- [Deutsch's Algorithm](https://quantum.cloud.ibm.com/learning/en/courses/fundamentals-of-quantum-algorithms/quantum-query-algorithms/deutsch-algorithm): Primary reference for the Deutsch circuit structure used in Problem 4 and the interference argument that makes a single query sufficient.
+- [Deutsch's Algorithm](https://quantum.cloud.ibm.com/learning/en/courses/fundamentals-of-quantum-algorithms/quantum-query-algorithms/deutsch-algorithm): Primary reference for the Deutsch circuit structure used in Problem 4 and the interference argument that makes a single query sufficient and for problem 5 structure and the scaling argument to extend deutch's single bit to n input bits
 - [Quantum Circuits](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/introduction): Qiskit documentation covering the circuit model used to implement the algorithm.
