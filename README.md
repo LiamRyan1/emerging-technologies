@@ -74,8 +74,9 @@ The circuit follows the same structure as Problem 4 but wider. Instead of one in
 This problem implements `build_oracle_from_function`, which encodes any four-bit Boolean function from Problem 1 as a quantum oracle, and `dj_circuit`, which wraps that oracle in the full Deutsch–Jozsa circuit. The algorithm is demonstrated on both constant functions and two randomly chosen balanced functions, and verified against the classical solution from Problem 2 across 20 randomly generated functions..
 
 ## References
-
-- Deutsch–Jozsa algorithm — https://en.wikipedia.org/wiki/Deutsch%E2%80%93Jozsa_algorithm
+- [Deutsch–Jozsa Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/deutsch-jozsa): Primary reference for the Deutsch–Jozsa algorithm, its circuit structure, and the promise problem it solves.
+- [Qiskit Documentation](https://qiskit.org/documentation/): Primary reference for the Qiskit framework used throughout the notebook to build and simulate quantum circuits.
+- [Deutsch–Jozsa Algorithm](https://en.wikipedia.org/wiki/Deutsch%E2%80%93Jozsa_algorithm): General overview of the algorithm, its history, and the mathematical background behind the constant and balanced function promise.
 - [What exactly is an oracle?](https://quantumcomputing.stackexchange.com/questions/4625/what-exactly-is-an-oracle/4626#4626): Explains the oracle abstraction, why functions are treated as black boxes, and what reversibility requires of the circuit.
 - [Quantum Superposition](https://scienceexchange.caltech.edu/topics/quantum-science-explained/quantum-superposition): Background on superposition, which is what makes a single oracle query sufficient in Problem 4.
 - [Quantum Entanglement and Global Properties](https://plato.stanford.edu/archives/fall2008/entries/qt-entangle/#5): Context for why quantum algorithms can determine global properties such as constant or balanced without checking every input.
